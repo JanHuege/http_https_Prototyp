@@ -15,11 +15,22 @@ var app = express();
 
 // Create an HTTP service.
 http.createServer(function(req, res){
-	res.writeHead(200)
-	res.end("Hello world\n Http")
+  res.writeHead(200)
+  res.end("Hello world\n Http")
 }).listen(80);
 // Create an HTTPS service identical to the HTTP service.
 https.createServer(options, function (req, res) {
   res.writeHead(200);
   res.end("hello world\n Https");
 }).listen(443);
+
+/*
+ app.get('/',function(req, res){
+ res.render('./build/index.html');
+ });
+ */
+
+app.use('/', express.static(__dirname + '/public'));
+app.listen(3000, function() { console.log('listening')});
+
+//app.listen(3000);
